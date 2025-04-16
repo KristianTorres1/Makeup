@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babi of Flowerknows - Princess Makeup</title>
+    <style>
+        :root {
+            --primary-pink: #ff9ac9;
+            --secondary-pink: #ffb8db;
+            --light-pink: #ffe6f2;
+            --accent-gold: #ffd700;
+            --text-color: #732e4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-pink);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .crown {
+            position: fixed;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 120px;
+            color: var(--accent-gold);
+            opacity: 0.8;
+            z-index: -1;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .sparkle {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnimation 2s forwards;
+            z-index: 1000;
+        }
+
+        @keyframes sparkleAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before, header::after {
+            content: '👑';
+            position: absolute;
+            font-size: 30px;
+            color: var(--accent-gold);
+            animation: float 3s infinite alternate;
+        }
+
+        header::before {
+            left: 20px;
+            top: 15px;
+            animation-delay: 0.5s;
+        }
+
+        header::after {
+            right: 20px;
+            top: 15px;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-10px) rotate(10deg);
+            }
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+        }
+
+        nav {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            margin: 5px 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: white;
+            color: var(--primary-pink);
+            border: 2px solid var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background-image: url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 154, 201, 0.7), rgba(255, 184, 219, 0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button {
+            background-color: var(--accent-gold);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Featured Products */
+        .featured {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-pink), var(--accent-gold), var(--primary-pink));
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card::before {
+            content: '👑';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 20px;
+            color: var(--accent-gold);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .product-image {
+            height: 200px;
+            width: 100%;
+            background-color: var(--light-pink);
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .add-to-cart {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--accent-gold);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category-card {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 154, 201, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .category-name {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .testimonial-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--secondary-pink);
+            opacity: 0.3;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-pink);
+        }
+
+        .testimonial-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .testimonial-nav-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .testimonial-nav-btn:hover {
+            color: var(--primary-pink);
+            transform: scale(1.2);
+        }
+
+        /* Instagram Feed */
+        .instagram {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .instagram-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .instagram-post {
+            position: relative;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .instagram-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .instagram-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 154, 201, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-post:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-content::before, .newsletter-content::after {
+            content: '✨';
+            position: absolute;
+            font-size: 24px;
+            color: var(--accent-gold);
+        }
+
+        .newsletter-content::before {
+            top: 20px;
+            left: 20px;
+            animation: float 3s infinite alternate;
+        }
+
+        .newsletter-content::after {
+            bottom: 20px;
+            right: 20px;
+            animation: float 3s infinite alternate-reverse;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 20px;
+            border: 2px solid var(--light-pink);
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary-pink);
+        }
+
+        .newsletter-button {
+            background-color: var(--primary-pink);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-button:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 50px 20px 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-image: linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.2) 75%);
+            background-size: 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Cart Popup */
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .cart-icon:hover {
+            background-color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .cart-popup {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-popup.active {
+            right: 0;
+        }
+
+        .cart-header {
+            background-color: var(--primary-pink);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: var(--light-pink);
+            border: none;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+
+        .item-quantity {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .remove-item {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            color: #ff0000;
+        }
+
+        .cart-footer {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--primary-pink);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-pink);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: all 0.5s ease;
+                z-index: 10;
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cart-popup {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                height: 350px;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .newsletter-content {
+                padding: 30px 20px;
+            }
+
+            .cart-popup {
+                width: 100%;
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* Base Responsive CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Container Responsiveness */
+.categories-container,
+.instagram-container,
+.footer-content,
+.featured,
+.newsletter {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+/* Flexible Grids */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.category-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.instagram-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+/* Responsive Forms */
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.newsletter-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Large Screens (above 1200px) */
+@media (min-width: 1201px) {
+    .categories-container,
+    .instagram-container,
+    .footer-content,
+    .featured {
+        max-width: 1200px;
+    }
+    
+    .newsletter,
+    .testimonials {
+        max-width: 800px;
+    }
+}
+
+/* Desktop and Large Tablets (992px - 1200px) */
+@media (max-width: 1200px) {
+    .hero h2 {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* Medium Screens (992px - 1199px) */
+@media (max-width: 991px) {
+    .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+/* Tablets (768px - 991px) */
+@media (max-width: 768px) {
+    /* Navigation */
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-pink);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all 0.5s ease;
+        z-index: 10;
+    }
+    
+    .nav-links.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    .nav-links li {
+        margin: 10px 0;
+    }
+    
+    /* Hero Section */
+    .hero {
+        height: 400px;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    /* Other Sections */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .category-card {
+        width: 180px;
+        height: 180px;
+    }
+    
+    /* Cart */
+    .cart-popup {
+        width: 300px;
+    }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (max-width: 576px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    .logo {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo-icon {
+        font-size: 2.5rem;
+    }
+    
+    .hero {
+        height: 350px;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .featured, 
+    .categories,
+    .testimonials,
+    .instagram,
+    .newsletter {
+        padding: 40px 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .product-title {
+        font-size: 1rem;
+    }
+    
+    .category-card {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .newsletter-content {
+        padding: 30px 20px;
+    }
+    
+    .cart-popup {
+        width: 100%;
+    }
+    
+    .cart-item-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .instagram-feed {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .instagram-post {
+        height: 150px;
+    }
+}
+
+/* Mobile Portrait (Below 480px) */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero {
+        height: 300px;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .product-info {
+        padding: 15px 10px;
+    }
+    
+    .product-price {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .add-to-cart {
+        width: 100%;
+        padding: 8px 0;
+        text-align: center;
+    }
+    
+    .category-cards {
+        gap: 15px;
+    }
+    
+    .category-card {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .testimonial-content {
+        padding: 20px 15px;
+    }
+    
+    .testimonial-quote {
+        font-size: 0.95rem;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+    }
+    
+    .cart-item-img {
+        width: 100%;
+        height: 120px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* Extra Small Devices (Below 320px) */
+@media (max-width: 320px) {
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .category-card {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Orientation-specific styles */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: 250px;
+    }
+    
+    .cart-popup {
+        overflow-y: auto;
+    }
+}
+
+/* High-resolution screens */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+    /* Optimize images for high-res displays if needed */
+}
+
+/* Print styles */
+@media print {
+    .cart-icon,
+    .nav-links,
+    .hamburger,
+    .newsletter,
+    .footer,
+    .back-to-top {
+        display: none;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .featured,
+    .categories,
+    .testimonials {
+        page-break-inside: avoid;
+    }
+}
+        
+        
+    </style>
+</head>
+<body>
+    <div class="crown">👑</div>
+    
+    <header>
+        <div class="logo">
+            <span class="logo-icon">🌸</span>
+            <h1>Babi of Flowerknows</h1>
+        </div>
+        <nav>
+            <button class="hamburger">≡</button>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Princess Club</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Unleash Your Inner Princess</h2>
+            <p>Discover our magical collection of princess-inspired makeup that will transform you into royalty. Made with love, sparkles, and a touch of magic.</p>
+            <button class="cta-button">Shop Now</button>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2 class="section-title">Royal Favorites</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="princess.jpg" alt="Princess Blush" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Royal Blush Palette</h3>
+                    <div class="product-price">
+                        <span class="price">$24.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="eyeshadow.jpg" alt="Crown Eyeshadow" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Crown Jewel Eyeshadow</h3>
+                    <div class="product-price">
+                        <span class="price">$32.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="magic.jpg" alt="Magic Lipstick" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Magic Potion Lipstick</h3>
+                    <div class="product-price">
+                        <span class="price">$18.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="foundation.jpg" alt="Fairy Foundation" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Fairy Glow Foundation</h3>
+                    <div class="product-price">
+                        <span class="price">$29.99</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="categories-container">
+            <h2 class="section-title">Royal Collection</h2>
+            <div class="category-cards">
+                <div class="category-card">
+                    <img src="faces.jpg" alt="Face" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Face</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="easy.jpg" alt="Eyes" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Eyes</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="kiss.jpeg" alt="Lips" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Lips</h3>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="amelia.jpg" alt="Accessories" class="category-image">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Accessories</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title">Princess Testimonials</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-slide active">
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">I absolutely love the Royal Blush Palette! It makes me feel like a real princess and the colors are so pigmented and beautiful. Everyone compliments me when I wear it!</p>
+                    <p class="testimonial-author">- Princess Sophia</p>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">The Magic Potion Lipstick stays on all day and the color is so vibrant! It's my go-to for special occasions and everyday wear. Definitely worth every penny!</p>
+                    <p class="testimonial-author">- Princess Emma</p>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">Fairy Glow Foundation gives me that perfect princess complexion I've always dreamed of. It's lightweight but provides amazing coverage. I'm in love!</p>
+                    <p class="testimonial-author">- Princess Olivia</p>
+                </div>
+            </div>
+            <div class="testimonial-navigation">
+                <button class="testimonial-nav-btn" id="prev-testimonial">◄</button>
+                <button class="testimonial-nav-btn" id="next-testimonial">►</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram">
+        <div class="instagram-container">
+            <h2 class="section-title">Royal Instagram</h2>
+            <div class="instagram-feed">
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+                <div class="instagram-post">
+                    <img src="review.jpg" alt="Instagram Post" class="instagram-img">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">♥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2 class="section-title">Join The Royal Court</h2>
+            <p>Subscribe to our newsletter and receive special offers, princess tips, and be the first to know about new product launches!</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your royal email address" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Babi of Flowerknows</h3>
+                <p>Bringing the magic of princess makeup to your everyday life. Cruelty-free, high-quality cosmetics designed to make you feel royal.</p>
+                <div class="social-links">
+                    <a href="#"><span>♥</span></a>
+                    <a href="#"><span>♦</span></a>
+                    <a href="#"><span>♣</span></a>
+                    <a href="#"><span>♠</span></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Princess Club</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Email: royal@babiofflowerknows.com</li>
+                    <li>Phone: +1 (123) 456-7890</li>
+                    <li>Address: Royal Tower, 123 Princess Avenue, Fairy Kingdom</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Babi of Flowerknows. All rights reserved. Made with ♥ for princesses everywhere.</p>
+        </div>
+    </footer>
+
+    <div class="cart-icon">
+        🛒
+        <span class="cart-count">0</span>
+    </div>
+
+    <div class="cart-popup">
+        <div class="cart-header">
+            <h2 class="cart-title">Your Royal Cart</h2>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>$0.00</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <button class="back-to-top">↑</button>
+
+    <script>
+        // JavaScript will be added here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation menu toggle for mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Testimonial slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.getElementById('prev-testimonial');
+            const nextBtn = document.getElementById('next-testimonial');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                testimonialSlides.forEach(slide => slide.classList.remove('active'));
+                testimonialSlides[index].classList.add('active');
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
+                showSlide(currentSlide);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                currentSlide = (currentSlide + 1) % testimonialSlides.length;
+                showSlide(currentSlide);
+            });
+            
+            // Auto-change testimonials
+            setInterval(function() {
+                currentSlide = (currentSlide + 1) % testimonialSlides.length;
+                showSlide(currentSlide);
+            }, 5000);
+            
+            // Cart functionality
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartPopup = document.querySelector('.cart-popup');
+            const closeCart = document.querySelector('.close-cart');
+            const overlay = document.querySelector('.overlay');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cartItems = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const cartTotal = document.querySelector('.cart-total span:last-child');
+            
+            let cart = [];
+            
+            cartIcon.addEventListener('click', function() {
+                cartPopup.classList.add('active');
+                overlay.classList.add('active');
+            });
+            
+            closeCart.addEventListener('click', function() {
+                cartPopup.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', function() {
+                cartPopup.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productImage = productCard.querySelector('.product-image').src;
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.price').textContent.replace('$', '');
+                    
+                    const existingItem = cart.find(item => item.title === productTitle);
+                    
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cart.push({
+                            image: productImage,
+                            title: productTitle,
+                            price: parseFloat(productPrice),
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    createSparkles(this);
+                    
+                    // Show cart briefly
+                    cartPopup.classList.add('active');
+                    overlay.classList.add('active');
+                    setTimeout(function() {
+                        cartPopup.classList.remove('active');
+                        overlay.classList.remove('active');
+                    }, 2000);
+                });
+            });
+            
+            function updateCart() {
+                cartItems.innerHTML = '';
+                let totalItems = 0;
+                let totalPrice = 0;
+                
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h3 class="cart-item-title">${item.title}</h3>
+                            <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                            <div class="cart-item-actions">
+                                <button class="quantity-btn minus" data-index="${index}">-</button>
+                                <span class="item-quantity">${item.quantity}</span>
+                                <button class="quantity-btn plus" data-index="${index}">+</button>
+                                <button class="remove-item" data-index="${index}">×</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                    totalItems += item.quantity;
+                    totalPrice += item.price * item.quantity;
+                });
+                
+                cartCount.textContent = totalItems;
+                cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+                
+                // Add event listeners to new buttons
+                document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.dataset.index;
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                        } else {
+                            cart.splice(index, 1);
+                        }
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.dataset.index;
+                        cart[index].quantity++;
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.dataset.index;
+                        cart.splice(index, 1);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Sparkle effect
+            function createSparkles(element) {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                for (let i = 0; i < 10; i++) {
+                    createSparkle(centerX, centerY);
+                }
+            }
+            
+            function createSparkle(x, y) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                
+                const size = Math.random() * 10 + 5;
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 60 + 20;
+                const duration = Math.random() * 1 + 1;
+                
+                const offsetX = Math.cos(angle) * distance;
+                const offsetY = Math.sin(angle) * distance;
+                
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                sparkle.style.backgroundColor = Math.random() > 0.5 ? 'var(--primary-pink)' : 'var(--accent-gold)';
+                sparkle.style.boxShadow = `0 0 ${size/2}px ${size/4}px ${sparkle.style.backgroundColor}`;
+                sparkle.style.animationDuration = `${duration}s`;
+                
+                sparkle.animate([
+                    { transform: `translate(0, 0) scale(0)`, opacity: 1 },
+                    { transform: `translate(${offsetX}px, ${offsetY}px) scale(1)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+                });
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    document.body.removeChild(sparkle);
+                }, duration * 1000);
+            }
+            
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('active');
+                } else {
+                    backToTopButton.classList.remove('active');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add crown floating effect
+            const crown = document.querySelector('.crown');
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                crown.style.transform = `translateX(-50%) rotate(${scrollY / 50}deg)`;
+            });
+            
+            // Product hover effect
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const rect = this.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            createSparkle(centerX + (Math.random() - 0.5) * rect.width, 
+                                         centerY + (Math.random() - 0.5) * rect.height);
+                        }, i * 100);
+                    }
+                });
+            });
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    // Menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Cart toggle
+    const cartIcon = document.querySelector('.cart-icon');
+    const cartPopup = document.querySelector('.cart-popup');
+    const overlay = document.querySelector('.overlay');
+    const closeCart = document.querySelector('.close-cart');
+    
+    cartIcon.addEventListener('click', function() {
+        cartPopup.classList.add('active');
+        overlay.classList.add('active');
+    });
+    
+    closeCart.addEventListener('click', function() {
+        cartPopup.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    overlay.addEventListener('click', function() {
+        cartPopup.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    // Testimonial slider
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else if (index >= slides.length) {
+            currentSlide = 0;
+        }
+        
+        slides[currentSlide].classList.add('active');
+    }
+    
+    prevBtn.addEventListener('click', function() {
+        currentSlide--;
+        showSlide(currentSlide);
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        currentSlide++;
+        showSlide(currentSlide);
+    });
+    
+    // Back to top button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+    
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+    </script>
+</body>
+</html>
